@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+myvenv/
+venv/
+ENV/
+env/
+
+# SQLite Databases
+*.db
+db.sqlite3
+
+# Static and media files (if collected locally)
+static/*
+!static/.gitkeep
+media/*
+!media/.gitkeep
+
+# Log files
+*.log
+
+# IDE and editor files
+.idea/
+*.swp
+*~
+tmp/
+*.tmproj
+.DS_Store
+
+# Coverage data
+.coverage
+htmlcov/
+
+# Django specific ignores
+*.pot
