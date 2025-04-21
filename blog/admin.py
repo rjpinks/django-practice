@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import BlogPost
+
+
+class BlogPostAdmin(admin.ModelAdmin):
+	fields = ['title', 'genre', 'content', 'image_address']
+
+
+admin.site.register(BlogPost, BlogPostAdmin)
