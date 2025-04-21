@@ -29,6 +29,7 @@ class BlogComment(models.Model):
 	last_edited = models.DateTimeField(auto_now_add=True, auto_now=True)
 
 	author = models.ForeignKey(BlogUser, on_delete=models.CASCADE, related_name='comments')
+	parent_post = models.ForeignKey(BlogPost, on_delete=models.CASCADE, related_name='comments')  # the related_name should allow reverse look-ups
 
 	def __str__(self):
 		return self.content[:10]
