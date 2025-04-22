@@ -11,8 +11,8 @@ ENV/
 env/
 
 # SQLite Databases
-*.db
-db.sqlite3
+# *.db
+# db.sqlite3
 
 # Static and media files (if collected locally)
 static/*
@@ -37,3 +37,6 @@ htmlcov/
 
 # Django specific ignores
 *.pot
+
+# Development Specific Data
+seeds/
