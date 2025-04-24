@@ -1,0 +1,26 @@
+#selfie {
+	height: auto;
+	width: auto;
+	border-radius: 15px;
+}
+
+#bio-container {
+
+}
+
+#home-container {
+	max-width: 60%;
+	background: dimgray;
+	border-radius: 5px;
+}
+
+.bio-p {
+	background: lightgray;
+	color: black;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+li {
+	color: whitesmoke;
+}
