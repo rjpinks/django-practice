@@ -13,8 +13,9 @@
 	justify-content: center;
 	font-size: 175%;
 	font-weight: bold;
-	color: #330033;
+	color: #754454;
 	margin-bottom: 0.5em;
+	border-bottom: 0.2em solid #754454;
 }
 
 @media (max-width: 1023px) {
@@ -41,11 +42,49 @@
 	border-radius: 5px;
 }
 
+#early-life {
+	color: #6a4475;
+}
+
+#early-adulthood {
+	color: #447571;
+}
+
+#professional-life {
+	color: #567544;
+}
+
 .bio-p {
 	background: lightgray;
 	color: black;
 	border-radius: 5px;
 	padding: 10px;
+	font-size: 20px;
+	margin: 5px;
+}
+
+@media (max-width: 1575px) {
+	.bio-p {
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 1360px) {
+	.bio-p {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.bio-p {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 1025px) {
+	.bio-p {
+		font-size: 20px;
+	}
 }
 
 li {
