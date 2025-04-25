@@ -3,17 +3,16 @@
 {% block content %}
 <div id="homepage-master" class="level-item">
 	<div id="home-container">
-		<div class="columns is-centered">
-			<div class="column is-flex is-justify-content-center is-align-items-center">
-				<div class="columns">
-					<div class="column">
-						<h1><strong>replace me with an image plz</strong></h1>
-						{% load static %}
-						<img id="selfie" src="{% static 'splash/home.jpg' %}" alt="A picture of me" width="250" height="400">
-					</div>
+		<h1 id="splash-header">Welcome to my page! Here's a little about me</h1>
+		<div class="columns is-centered is-variable is-4 is-multiline">
+			<div class="column is-full-tablet is-half-desktop">
+				<div id="selfie-container">
+					{% load static %}
+					<img class="selfie" src="{% static 'splash/home.jpg' %}" alt="A picture of me" width="250" height="400">
+					<img class="selfie" src="{% static 'splash/home2.jpg' %}" alt="A picture of me" width="250" height="400">
 				</div>
 			</div>
-			<div id="bio-container" class="column">
+			<div id="bio-container" class="column is-full-tablet is-half-desktop">
 				<p id="early-life" class="bio-p">
 					I was born and raised in northern Illinois. I grew up in a husk of a small town that, at one point, was a pretty nice place to be. Growing up, I really liked to go fishing, playing video games, riding bikes out on paths. One thing that had a huge impact on me was my uncle giving me an iMac G3. It was one of the blue-ish green ones. The screen lighting up unraveled a whole new world to me.
 				</p><br>

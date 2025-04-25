@@ -1,11 +1,38 @@
-#selfie {
+.selfie {
 	height: auto;
 	width: auto;
 	border-radius: 15px;
+	padding: 12px;
+	background: lightgray;
+	border: 20px;
+	margin: 5px;
 }
 
-#bio-container {
+#splash-header {
+	display: flex;
+	justify-content: center;
+	font-size: 175%;
+	font-weight: bold;
+	color: #330033;
+	margin-bottom: 0.5em;
+}
 
+@media (max-width: 1023px) {
+	#splash-header {
+		font-size: 125%;
+	}
+}
+
+@media (max-width: 715px) {
+	#splash-header {
+		font-size: 100%;
+	}
+}
+
+#selfie-container {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 }
 
 #home-container {
