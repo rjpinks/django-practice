@@ -5,8 +5,13 @@
 	<div id="home-container">
 		<div class="columns is-centered">
 			<div class="column is-flex is-justify-content-center is-align-items-center">
-				{% load static %}
-				<img id="selfie" src="{% static 'splash/home.jpg' %}" alt="A picture of me" width="250" height="400">
+				<div class="columns">
+					<div class="column">
+						<h1><strong>replace me with an image plz</strong></h1>
+						{% load static %}
+						<img id="selfie" src="{% static 'splash/home.jpg' %}" alt="A picture of me" width="250" height="400">
+					</div>
+				</div>
 			</div>
 			<div id="bio-container" class="column">
 				<p id="early-life" class="bio-p">
