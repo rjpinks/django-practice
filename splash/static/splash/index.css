@@ -19,7 +19,7 @@
 	background-color: #1117bd;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1025px) {
 	#splash-header {
 		font-size: 125%;
 	}
@@ -41,6 +41,8 @@
 	max-width: 60%;
 	background: dimgray;
 	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #early-life {
@@ -55,6 +57,24 @@
 	color: #567544;
 }
 
+#homepage-master {
+	display: flex;
+	flex-direction: column;
+}
+
+@media (max-width: 1025px) {
+	#interest-container {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+#interest-header {
+	font-size: 20px;
+	font-weight: bold;
+	border-bottom: 0.05em solid dimgray;
+}
+
 .bio-p {
 	background: lightgray;
 	color: black;
@@ -62,6 +82,18 @@
 	padding: 10px;
 	font-size: 20px;
 	margin: 5px;
+}
+
+.hidden-details {
+	display: none;
+}
+
+.appeared-details {
+	display: block;
+}
+
+.interest-items {
+	color: dimgray;
 }
 
 @media (max-width: 1575px) {
@@ -86,8 +118,4 @@
 	.bio-p {
 		font-size: 20px;
 	}
-}
-
-li {
-	color: whitesmoke;
 }
