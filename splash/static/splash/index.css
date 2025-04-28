@@ -75,6 +75,11 @@
 	border-bottom: 0.05em solid dimgray;
 }
 
+#interest-master {
+	max-width: 60%;
+	margin: auto;
+}
+
 .bio-p {
 	background: lightgray;
 	color: black;
@@ -90,6 +95,15 @@
 
 .appeared-details {
 	display: block;
+	max-width: 40%;
+	margin-bottom: 13px;
+	margin-left: 16px;
+}
+
+@media (max-width: 1120px) {
+	.appeared-deatils {
+		max-width: 20%;
+	}
 }
 
 .interest-items {
@@ -117,5 +131,16 @@
 @media (max-width: 1025px) {
 	.bio-p {
 		font-size: 20px;
+	}
+}
+
+.detail-container {
+	max-width: 40%;
+	margin-bottom: 3px;
+}
+
+@media (max-width: 1120px) {
+	.detail-container {
+		max-width: 20%;
 	}
 }
