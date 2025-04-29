@@ -9,5 +9,6 @@ urlpatterns = [
 	# ex: /resume
 	path('resume', views.download_resume, name='download_resume'),
 	# ex: /contact
-	path('contact', views.contact, name='contact')
+	path('contact', views.contact, name='contact'),
+	path('guestbook', views.guestbook, name='guestbook')
 ]

@@ -20,3 +20,7 @@ def download_resume(request):
 def contact(request):
 	return render(request, 'splash/contact.html', {'contacts': ['dummy data']})
 	
+
+def guestbook(request):
+	return render(request, 'splash/guestbook.html', {'guestbook': ['dummy data']})
+	
