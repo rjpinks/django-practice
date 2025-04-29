@@ -9,6 +9,10 @@
       {% load static %}
       <link rel="stylesheet" href="{% static 'splash/index.css' %}">
     {% endif %}
+    {% if contacts %}
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'splash/contact.css' %}">
+    {% endif %}
 </head>
 <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -62,18 +66,22 @@
               </div>
             </div>
 
-            <div class="navbar-end">
-              <div class="navbar-item">
-                <div class="buttons">
-                  <a class="button is-primary">
-                    <strong>Sign up</strong>
-                  </a>
-                  <a class="button is-light">
-                    Log in
-                  </a>
+            <!-- I'll have to find the right templates that I want this in it and change this out -->
+            {% if interests %}
+            {% else %}
+              <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <a class="button is-primary">
+                      <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light">
+                      Log in
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
+            {% endif %}
         </div>
     </nav>
     {% block content %}{% endblock %}

@@ -7,5 +7,7 @@ urlpatterns = [
 	# ex: /
 	path('', views.index, name='index'),
 	# ex: /resume
-	path('resume', views.download_resume, name='download_resume')
+	path('resume', views.download_resume, name='download_resume'),
+	# ex: /contact
+	path('contact', views.contact, name='contact')
 ]
