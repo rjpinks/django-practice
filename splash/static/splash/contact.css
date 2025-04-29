@@ -1,5 +1,24 @@
-#contact-master {
-	max-width: 60%;
+.contact-container {
+	max-width: 40%;
+	margin: auto;  
+	padding: 1.0em;
+	border: 0.5em solid black;
+	background-color: #330066;
+	color: whitesmoke;
+	border-radius: 12px;
+}
+
+.contact-card {
+	margin: 1.0em;
+
+}
+
+.contact-info {
+	max-width: 20%;
 	margin: auto;
-	background-color: dimgray;
+}
+
+.contact-type {
+	max-width: 25%;
+	border-bottom: .05em solid black;
 }

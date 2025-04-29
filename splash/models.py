@@ -6,3 +6,10 @@ class Interest(models.Model):
 
 	def __str__(self):
 		return self.title
+
+
+class Guestbook(models.Model):
+	name = models.CharField(max_length=65)
+	location = models.CharField(max_length=65)
+	comment = models.CharField()
+	

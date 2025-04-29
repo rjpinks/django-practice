@@ -1,8 +1,18 @@
 {% extends "splash/base.html" %}
+
 {% block content %}
-<div>
-	<div id="contact-master">
-		<h1>hello world</h1>
+<div class="contact-container">
+	<div class="contact-card">
+		<h2 class="contact-type">Email</h2>
+		<p class="contact-info">pinkstonr54@gmail.com</p>
 	</div>
+	<div class="contact-card">
+		<h2 class="contact-type">Cellphone</h2>
+		<p class="contact-info">815-564-7885</p>
+	</div>
+</div><br>
+<div class="contact-container">
+	<h2>Or you could <a href="/guestbook">Sign the guestbook!</a></h2>
+	<p style="font-size: 8px;">*Keep in mind that I do not check it regularly</p>
 </div>
 {% endblock %}
