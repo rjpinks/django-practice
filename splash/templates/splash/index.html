@@ -44,7 +44,22 @@
 				</ul>
 			</div>
 		</div>
+		{% for interest in interests %}
+		<script type="text/javascript">
+			const btn{{ interest.id }} = document.querySelector('#interest-button{{ interest.id }}')
+			btn{{ interest.id }}.addEventListener('click', (e) => {
+				console.log('clicked!')
+				const pEl = document.querySelector('#interest-details{{ interest.id }}')
+				if (pEl.className == 'hidden-details') {
+					pEl.className = 'appeared-details'
+					e.currentTarget.innerHTML = '↑'
+				} else if (pEl.className == 'appeared-details') {
+					pEl.className = 'hidden-details'
+					e.currentTarget.innerHTML = '↓'
+				}
+			})
+		</script>
+		{% endfor %}
 	{% endif %}
 </div>
-<script src="{% static 'splash/index.js' %}" type="text/javascript"></script>
 {% endblock %}
