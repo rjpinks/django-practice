@@ -45,23 +45,6 @@
 	margin-right: auto;
 }
 
-#early-life {
-	color: #6a4475;
-}
-
-#early-adulthood {
-	color: #447571;
-}
-
-#professional-life {
-	color: #567544;
-}
-
-#homepage-master {
-	display: flex;
-	flex-direction: column;
-}
-
 @media (max-width: 1025px) {
 	#interest-container {
 		display: flex;
@@ -73,11 +56,6 @@
 	font-size: 20px;
 	font-weight: bold;
 	border-bottom: 0.05em solid dimgray;
-}
-
-#interest-master {
-	max-width: 60%;
-	margin: auto;
 }
 
 .bio-p {

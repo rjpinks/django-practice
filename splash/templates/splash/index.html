@@ -1,7 +1,7 @@
 {% extends "splash/base.html" %}
 
 {% block content %}
-<div id="homepage-master" class="">
+<div style="display: flex; flex-direction: column" class="">
 	<div id="home-container" class="section p-0">
 		<h1 id="splash-header">Welcome to my page! Here's a little about me</h1>
 		<div class="columns is-centered is-variable is-4 is-multiline">
@@ -13,20 +13,20 @@
 				</div>
 			</div>
 			<div id="bio-container" class="column is-full-tablet is-half-desktop">
-				<p id="early-life" class="bio-p">
+				<p style="color: #6a4475;" class="bio-p">
 					I was born and raised in northern Illinois. I grew up in a husk of a small town that, at one point, was a pretty nice place to be. Growing up, I really liked to go fishing, playing video games, riding bikes out on paths. One thing that had a huge impact on me was my uncle giving me an iMac G3. It was one of the blue-ish green ones. The screen lighting up unraveled a whole new world to me.
 				</p><br>
-				<p id="early-adulthood" class="bio-p">
+				<p style="color: #447571;" class="bio-p">
 					I really loved school, but I didn't have any money after I graduated high school. Being from a small town, I was dying to move away, so I joined the Army. I was lucky enough to be stationed in Schofield Barracks, Hawaii. After a little under four years in the infantry, I got out with the plan of becoming a history teacher. I graduated from the University of Illinois with a BA in History and a minor in French.
 				</p><br>
-				<p id="professional-life" class="bio-p">
+				<p style="color: #567544;" class="bio-p">
 					I spent a year as an assistant teacher in Riberac, France to see if I enjoyed teaching. I did, but I decided that it wasn't the correct career  path for me. I'd rather be the student than the teacher. Afterwards, I moved back to my small hometown. I worked for a year in a steel mill to save money. Then, I took a full stack bootcamp to learn to develop software and further delve into my interest in computers. Unfortunately, post-Covid lay offs slowed down my career progress. On the bright side, I did find a job implementing software in a hospital. In the meantime, I've been further enhancing my knowledge base by study data structures and algorithms, devops, linux, and object oriented programming.
 				</p>
 			</div>
 		</div>
 	</div>
 	{% if interests %}
-		<div id="interest-master" class="section level">
+		<div style="max-width: 60%; margin: auto;" class="section level">
 			<div id="interest-container" class="level-item">
 				<h2 id="interest-header" class="pr-6 mr-6 mb-3">Current Interests:</h2>
 				<ul id="interest-list-container">
@@ -40,26 +40,27 @@
 								{{ interest.content }}
 							</p>
 						</div>
+						<script type="text/javascript">
+							const btn{{ interest.id }} = document.querySelector('#interest-button{{ interest.id }}')
+							btn{{ interest.id }}.addEventListener('click', (e) => {
+								console.log('clicked!')
+								const pEl = document.querySelector('#interest-details{{ interest.id }}')
+								if (pEl.className == 'hidden-details') {
+									pEl.className = 'appeared-details'
+									e.currentTarget.innerHTML = '↑'
+								} else if (pEl.className == 'appeared-details') {
+									pEl.className = 'hidden-details'
+									e.currentTarget.innerHTML = '↓'
+								}
+							})
+						</script>
 					{% endfor %}
 				</ul>
 			</div>
 		</div>
-		{% for interest in interests %}
-		<script type="text/javascript">
-			const btn{{ interest.id }} = document.querySelector('#interest-button{{ interest.id }}')
-			btn{{ interest.id }}.addEventListener('click', (e) => {
-				console.log('clicked!')
-				const pEl = document.querySelector('#interest-details{{ interest.id }}')
-				if (pEl.className == 'hidden-details') {
-					pEl.className = 'appeared-details'
-					e.currentTarget.innerHTML = '↑'
-				} else if (pEl.className == 'appeared-details') {
-					pEl.className = 'hidden-details'
-					e.currentTarget.innerHTML = '↓'
-				}
-			})
-		</script>
-		{% endfor %}
 	{% endif %}
+</div>
+<div style="margin: auto; width: 10%;">
+	<a href="/contact">Sign the guestbook!</a>
 </div>
 {% endblock %}
