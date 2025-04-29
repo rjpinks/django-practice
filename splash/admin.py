@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Interest
+
+class InterestAdmin(admin.ModelAdmin):
+	fields = ['title', 'content']
+
+admin.site.register(Interest, InterestAdmin)
