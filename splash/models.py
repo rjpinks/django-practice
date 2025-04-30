@@ -13,3 +13,6 @@ class Guestbook(models.Model):
 	location = models.CharField(max_length=65)
 	comment = models.CharField()
 	
+	def __str__(self):
+		return self.name
+		
