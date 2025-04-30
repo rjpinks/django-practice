@@ -34,3 +34,8 @@ def guestbook(request):
 
 	Guestbook.objects.create(name=name, location=location, comment=comment)
 	return redirect('index')
+
+
+def portfolio(request):
+	return render(request, 'splash/portfolio.html', {'portfolio': ['dummy data']})
+	

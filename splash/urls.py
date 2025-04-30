@@ -10,6 +10,8 @@ urlpatterns = [
 	path('resume', views.download_resume, name='download_resume'),
 	# ex: /contact
 	path('contact', views.contact, name='contact'),
+	# ex: /guestbook POST & GET
 	path('guestbook', views.guestbook, name='guestbook'),
-	# path('guestbook/submit', views.guestbook_submit, name="guestbook_submit")
+	# ex: /portfolio
+	path('portfolio', views.portfolio, name='portfolio')
 ]

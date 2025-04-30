@@ -17,6 +17,10 @@
       {% load static %}
       <link rel="stylesheet" href="{% static 'splash/guestbook.css' %}">
     {% endif %}
+    {% if portfolio %}
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'splash/portfolio.css' %}">
+    {% endif %}
 </head>
 <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
