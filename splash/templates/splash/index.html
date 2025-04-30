@@ -1,5 +1,10 @@
 {% extends "splash/base.html" %}
 
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'splash/index.css' %}">
+{% endblock %}
+
 {% block content %}
 <div style="display: flex; flex-direction: column" class="">
 	<div id="home-container" class="section p-0">

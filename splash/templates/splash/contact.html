@@ -1,5 +1,10 @@
 {% extends "splash/base.html" %}
 
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'splash/contact.css' %}">
+{% endblock %}
+
 {% block content %}
 <div>
 	<div>

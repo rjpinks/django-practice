@@ -21,12 +21,12 @@ def download_resume(request):
 
 
 def contact(request):
-	return render(request, 'splash/contact.html', {'contacts': ['dummy data']})  # dummy data for loading correct css file
+	return render(request, 'splash/contact.html')
 	
 
 def guestbook(request):
 	if request.method == 'GET':
-		return render(request, 'splash/guestbook.html', {'guestbook': ['dummy data']})  # dummy data for loading correct css file
+		return render(request, 'splash/guestbook.html')
 
 	name = request.POST.get('name')
 	location = request.POST.get('location')
@@ -37,5 +37,5 @@ def guestbook(request):
 
 
 def portfolio(request):
-	return render(request, 'splash/portfolio.html', {'portfolio': ['dummy data']})
+	return render(request, 'splash/portfolio.html')
 	

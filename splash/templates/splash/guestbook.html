@@ -1,5 +1,10 @@
 {% extends "splash/base.html" %}
 
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'splash/guestbook.css' %}">
+{% endblock %}
+
 {% block content %}
 <form id="master-container" action="/guestbook" method="post">
 	{% csrf_token %}
