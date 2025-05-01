@@ -8,12 +8,15 @@ def index(request):
 	return render(request, 'blog/index.html', {'posts': post_genres})
 
 
-def posts(request):
-	posts = Post.objects.all()
-	return render(request, 'blog/posts.html', {'posts': posts})
+def posts_genre(request, genre):
+	if genre == 'all':
+		posts = Post.objects.all().values('title', 'date_pub').order_by('-date_pub')
+		return render(request, 'blog/posts.html', {'posts': posts})
 
-
-def posts_genre(request):
-	posts = Post.objects.filter(genre=request.genre)
-	return render(request, 'blog/posts.html', {'posts': posts})
+	genre_list = Post.objects.values_list('genre', flat=True).distinct()
+	if genre in genre_list:
+		posts = Post.objects.filter(genre=genre).values('title', 'date_pub').order_by('-date_pub')
+		return render(request, 'blog/posts.html', {'posts': posts})
+	
+	return Http404("Genre Not Found")
 	

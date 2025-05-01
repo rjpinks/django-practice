@@ -12,7 +12,7 @@
             <h2>Select a topic</h2>
             <ul>
                 {% for post in posts %}
-                    <li><a href="{{ post.genre }}">{{ post.genre }}</a></li>
+                    <li><a href="/blog/posts/{{ post.genre }}">{{ post.genre }}</a></li>
                 {% endfor %}
                 <li><a href="all">all</a></li>
             </ul>
