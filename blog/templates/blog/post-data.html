@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'blog/post-data.css' %}">
+{% endblock %}
+
+{% block content %}
+<div>
+	<h2>{{ post.title }}</h2>
+	{% if post.content %}
+		<p>{{ post.content }}</p>
+	{% endif %}
+	{% if post.image_address %}
+		<img src="{{ post.image_address }}" alt="cool artwork or image associated with the article">
+	{% endif %}
+</div>
+{% endblock %}
