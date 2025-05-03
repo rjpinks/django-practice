@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import Http404
+from django.core.paginator import Paginator
 
 from .models import Post
 
@@ -9,16 +10,23 @@ def index(request):
 	return render(request, 'blog/index.html', {'posts': post_genres})
 
 
-def posts_all(request):
-	posts = Post.objects.all().values('id', 'title', 'date_pub').order_by('-date_pub')
-	return render(request, 'blog/posts.html', {'posts': posts})
-
-
 def posts_genre(request, genre):
+	if genre == 'all':
+		posts = Post.objects.all().values('id', 'title', 'date_pub').order_by('-date_pub')
+		paginator = Paginator(posts, 10)
+
+		page_num = request.GET.get('page')
+		page_obj = paginator.get_page(page_num)
+		return render(request, 'blog/posts.html', {'post_paginator': page_obj})
+
 	genre_list = Post.objects.values_list('genre', flat=True).distinct()
 	if genre in genre_list:
 		posts = Post.objects.filter(genre=genre).values('id', 'title', 'date_pub').order_by('-date_pub')
-		return render(request, 'blog/posts.html', {'posts': posts})
+		paginator = Paginator(posts, 10)
+
+		page_num = request.GET.get('page')
+		page_obj = paginator.get_page(page_num)
+		return render(request, 'blog/posts.html', {'post_paginator': page_obj})
 	
 	raise Http404("Genre Not Found")
 	

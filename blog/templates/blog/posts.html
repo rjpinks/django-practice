@@ -7,12 +7,65 @@
 
 {% block content %}
 <div>
-	{% for post in posts %}
+	{% for post in post_paginator.object_list %}
 		<div>
 			<h1>{{ post.id }}</h1>
-			<a href="{% url 'post_data' post.id %}"><h2>{{ post.title }}</h2></a>
+			<a href="{% url 'post_data' post.id %}">
+				<h2>{{ post.title }}</h2>
+			</a>
 			<p>{{ post.date_pub|date:'Y-m-d' }}</p>
 		</div>
 	{% endfor %}
+
+	<h1>BULMA COMPONENT</h1>
+	<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+		{% if post_paginator.has_previous %}
+			<a href="?page={{ post_paginator.previous_page_number }}" class="pagination-previous">Previous</a>
+		{% endif %}
+		{% if post_paginator.has_next %}
+			<a href="?page={{ post_paginator.next_page_number }}" class="pagination-next">Next page</a>
+		{% endif %}
+		<ul class="pagination-list">
+   			{% if post_paginator.has_previous %}
+   				<li>
+	   				<a href="?page=1" class="pagination-link" aria-label="Goto page 1">
+	   					1
+	   				</a>
+	   			</li>
+	    		<li>
+	    			<span class="pagination-ellipsis">&hellip;</span>
+	    		</li>
+    			<li>
+	    			<a href="?page={{ post_paginator.previous_page_number }}" class="pagination-link" aria-label="Goto page 45">
+	    				{{ post_paginator.previous_page_number }}
+	    			</a>
+    			</li>
+    		{% endif %}
+    		<li>
+      			<a
+        			class="pagination-link is-current"
+        			aria-label="Page 46"
+        			aria-current="page"
+        		>
+        			{{ post_paginator.number }}
+        		</a>
+    		</li>
+    		{% if post_paginator.has_next %}
+    			<li>
+	    			<a href="?page={{ post_paginator.next_page_number }}" class="pagination-link" aria-label="Goto page 47">
+	    				{{ post_paginator.next_page_number }}
+	    			</a>
+	    		</li>
+	    		<li>
+	    			<span class="pagination-ellipsis">&hellip;</span>
+	    		</li>
+	    		<li>
+	    			<a href="?page={{ post_paginator.paginator.num_pages }}" class="pagination-link" aria-label="Goto page 86">
+	    				{{ post_paginator.paginator.num_pages }}
+	    			</a>
+	    		</li>
+    		{% endif %}
+  		</ul>
+	</nav>
 </div>
 {% endblock %}
