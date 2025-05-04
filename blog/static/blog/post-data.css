@@ -1,0 +1,28 @@
+#post-data-master {
+	max-width: 60%;
+	margin: auto;
+	background-color: red;
+	border-radius: 12px;
+	color: blue;
+}
+
+#post-title {
+	text-align: center;
+	font-size: 32px;
+	border-bottom: .025em solid blue;
+}
+
+#post-section {
+	background-color: black;
+	padding: 1.0em;
+	color: whitesmoke;
+	border-radius: 0px 0px 12px 12px;
+}
+
+#post-image {
+
+}
+
+#post-content {
+	margin-bottom: 10px;
+}

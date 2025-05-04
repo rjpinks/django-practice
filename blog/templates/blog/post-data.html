@@ -6,13 +6,15 @@
 {% endblock %}
 
 {% block content %}
-<div>
-	<h2>{{ post.title }}</h2>
+<div id="post-data-master">
+	<h2 id="post-title">{{ post.title }}</h2>
 	{% if post.content %}
-		<p>{{ post.content }}</p>
+		<section id="post-section">
+			<p id="post-content">{{ post.content }}</p>
+		</section>
 	{% endif %}
 	{% if post.image_address %}
-		<img src="{{ post.image_address }}" alt="cool artwork or image associated with the article">
+		<img id="post-image" src="{{ post.image_address }}" alt="cool artwork or image associated with the article">
 	{% endif %}
 </div>
 {% endblock %}
