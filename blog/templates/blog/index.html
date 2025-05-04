@@ -7,16 +7,21 @@
 
 {% block content %}
 {% if posts %}
-    <div>
+    <div class="topic-container">
         <div>
-            <h2>Select a topic</h2>
-            <ul>
+            <h2 id="topic-header">Select a topic</h2>
+            <ul id="post-list">
+                <li class="post-item"><a href="/blog/posts/all" class="post-anchor">All</a></li>
                 {% for post in posts %}
-                    <li><a href="{% url 'posts_genre' post.genre %}">{{ post.genre }}</a></li>
+                    <li class="post-item"><a href="{% url 'posts_genre' post.genre %}" class="post-anchor">{{ post.genre }}</a></li>
                 {% endfor %}
-                <li><a href="/blog/posts/all">all</a></li>
             </ul>
         </div>
     </div>
+{% else %}
+    <div class="topic-container">
+        <h1>There are no posts to show ¯\_(ツ)_/¯</h1>
+    </div>
 {% endif %}
+<br>
 {% endblock %}

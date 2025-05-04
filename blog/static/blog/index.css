@@ -1,3 +1,32 @@
-h1 {
-	color: red;
+#topic-header {
+	font-size: 28px;
+	color: #0000b3;
+	background-color: #ff6666;
+	border-radius: 12px 12px 0px 0px;
+	border-bottom: 0.25em solid #000080;
+	text-align: center;
+}
+
+#post-list {
+
+}
+
+.topic-container {
+	max-width: 40%;
+	margin: auto;
+	background-color: #990000;
+	border-radius: 12px;
+	border: 0.25em solid #000080;
+}
+
+.post-item {
+	border-bottom: 0.125em solid #000080;
+	padding: 0.15em;
+	margin-left: 0.15em;
+	margin-right: 0.15em;
+}
+
+.post-anchor {
+	font-size: 18px;
+	color: #0000ff;
 }
