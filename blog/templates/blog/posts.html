@@ -6,66 +6,71 @@
 {% endblock %}
 
 {% block content %}
-<div>
-	{% for post in post_paginator.object_list %}
-		<div>
-			<h1>{{ post.id }}</h1>
-			<a href="{% url 'post_data' post.id %}">
-				<h2>{{ post.title }}</h2>
-			</a>
-			<p>{{ post.date_pub|date:'Y-m-d' }}</p>
-		</div>
-	{% endfor %}
-
+<div id="post-master">
+	<ul id="post-container">
+		{% for post in post_paginator.object_list %}
+			<li class="post-item">
+				<a class="post-anchor" href="{% url 'post_data' post.id %}">
+					<h2 class="post-title">{{ post.title }}</h2>
+				</a>
+				<div class="date-container">
+					<p class="published-p">published:</p>
+					<p class="post-date">{{ post.date_pub|date:'Y-m-d' }}</p>
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
 	<br>
+</div>
+<div id="footer">
 	<nav class="pagination is-centered" role="navigation" aria-label="pagination">
 		{% if post_paginator.has_previous %}
-			<a href="?page={{ post_paginator.previous_page_number }}" class="pagination-previous">Previous</a>
+			<a href="?page={{ post_paginator.previous_page_number }}" class="pagination-previous" style="margin-left: 12px;">Previous</a>
 		{% endif %}
 		{% if post_paginator.has_next %}
-			<a href="?page={{ post_paginator.next_page_number }}" class="pagination-next">Next page</a>
+			<a href="?page={{ post_paginator.next_page_number }}" class="pagination-next" style="margin-right: 12px;">Next page</a>
 		{% endif %}
 		<ul class="pagination-list">
-   			{% if post_paginator.has_previous %}
-   				<li>
-	   				<a href="?page=1" class="pagination-link" aria-label="Goto page 1">
-	   					1
-	   				</a>
-	   			</li>
+	   		{% if post_paginator.has_previous %}
+	   			<li>
+		   			<a href="?page=1" class="pagination-link" aria-label="Goto page 1">
+		   				1
+		   			</a>
+		   		</li>
+		    	<li>
+		    		<span class="pagination-ellipsis">&hellip;</span>
+		    	</li>
 	    		<li>
-	    			<span class="pagination-ellipsis">&hellip;</span>
+		    		<a href="?page={{ post_paginator.previous_page_number }}" class="pagination-link" aria-label="Goto page 45">
+		    			{{ post_paginator.previous_page_number }}
+		    		</a>
 	    		</li>
-    			<li>
-	    			<a href="?page={{ post_paginator.previous_page_number }}" class="pagination-link" aria-label="Goto page 45">
-	    				{{ post_paginator.previous_page_number }}
-	    			</a>
-    			</li>
-    		{% endif %}
-    		<li>
-      			<a
-        			class="pagination-link is-current"
-        			aria-label="Page 46"
-        			aria-current="page"
-        		>
-        			{{ post_paginator.number }}
-        		</a>
-    		</li>
-    		{% if post_paginator.has_next %}
-    			<li>
-	    			<a href="?page={{ post_paginator.next_page_number }}" class="pagination-link" aria-label="Goto page 47">
-	    				{{ post_paginator.next_page_number }}
-	    			</a>
-	    		</li>
+	    	{% endif %}
+	    	<li>
+	      		<a
+	        		class="pagination-link is-current"
+	        		aria-label="Page 46"
+	        		aria-current="page"
+	        	>
+	        		{{ post_paginator.number }}
+	        	</a>
+	    	</li>
+	    	{% if post_paginator.has_next %}
 	    		<li>
-	    			<span class="pagination-ellipsis">&hellip;</span>
-	    		</li>
-	    		<li>
-	    			<a href="?page={{ post_paginator.paginator.num_pages }}" class="pagination-link" aria-label="Goto page 86">
-	    				{{ post_paginator.paginator.num_pages }}
-	    			</a>
-	    		</li>
-    		{% endif %}
-  		</ul>
+		    		<a href="?page={{ post_paginator.next_page_number }}" class="pagination-link" aria-label="Goto page 47">
+		    			{{ post_paginator.next_page_number }}
+		    		</a>
+		    	</li>
+		    	<li>
+		    		<span class="pagination-ellipsis">&hellip;</span>
+		    	</li>
+		    	<li>
+		    		<a href="?page={{ post_paginator.paginator.num_pages }}" class="pagination-link" aria-label="Goto page 86">
+		    			{{ post_paginator.paginator.num_pages }}
+		    		</a>
+		    	</li>
+	    	{% endif %}
+	  	</ul>
 	</nav>
 </div>
 {% endblock %}
