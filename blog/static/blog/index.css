@@ -1,10 +1,26 @@
 #topic-header {
 	font-size: 28px;
-	color: #0000b3;
-	background-color: #ff6666;
-	border-radius: 12px 12px 0px 0px;
+	color: #990000;
+	background-color: #000080;
+	border-radius: 8px 8px 0px 0px;
 	border-bottom: 0.25em solid #000080;
 	text-align: center;
+}
+
+#blog-index-image {
+	max-width: 40%;
+	margin: auto;
+}
+
+#image-wrapper {
+	max-width: 40%;
+	margin: auto;
+	background-color: #990000;
+	padding: 20px;
+	border: 20px solid #000080;
+	display: flex;
+	justify-content: center;
+	border-radius: 12px;
 }
 
 #post-list {
