@@ -7,6 +7,10 @@
 
 {% block content %}
 <div id="post-master">
+	<div id="genre-header-container">
+		<h1 id="genre-header">{{ genre }}</h1>
+	</div>
+	<br>
 	<ul id="post-container">
 		{% for post in post_paginator.object_list %}
 			<li class="post-item">

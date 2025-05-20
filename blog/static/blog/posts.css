@@ -16,6 +16,28 @@
   	z-index: 1000;
 }
 
+#genre-header {
+	background-color: #000099;;
+	border-radius: 12px;
+	color: #ff1a1a;
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+	padding-top: 0.125em;
+	padding-bottom: 0.125em;
+}
+
+#genre-header-container {
+	margin: auto;
+	max-width: 60%;
+	border-radius: 12px;
+	background-color: #b30000;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
 .post-item {
 	display: flex;
 	flex-direction: row;

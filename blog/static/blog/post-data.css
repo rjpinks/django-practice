@@ -26,3 +26,37 @@
 #post-content {
 	margin-bottom: 10px;
 }
+
+#comments-container {
+	margin: auto;
+	max-width: 80%;
+	background-color: black;
+	color: whitesmoke;
+	border-radius: 12px;
+	padding: 3px;
+}
+
+#comments-header {
+	text-align: center;
+	font-size: 32px;
+	border-bottom: .025em solid blue;
+	background-color: red;
+	color: blue;
+	border-radius: 12px 12px 0px 0px;
+	margin-bottom: 0.75em;
+}
+
+.comment-date {
+	text-align: right;
+	margin-top: 0.75em;
+}
+
+.comment-section {
+	border-bottom: 0.05em solid whitesmoke;
+	padding-bottom: 1.5em;
+	margin-bottom: 0.75em;
+}
+
+.comment-author {
+	margin-bottom: 0.75em;
+}
