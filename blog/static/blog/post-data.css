@@ -1,22 +1,21 @@
 #post-data-master {
 	max-width: 60%;
 	margin: auto;
-	background-color: red;
+	background-color: darkslategray;
 	border-radius: 12px;
-	color: blue;
+	color: whitesmoke;
 }
 
 #post-title {
 	text-align: center;
 	font-size: 32px;
-	border-bottom: .025em solid blue;
+	border-bottom: .025em solid gray;
 }
 
 #post-section {
 	background-color: black;
 	padding: 1.0em;
 	color: whitesmoke;
-	border-radius: 0px 0px 12px 12px;
 }
 
 #post-image {
@@ -28,6 +27,7 @@
 }
 
 #comments-container {
+	display: none;
 	margin: auto;
 	max-width: 80%;
 	background-color: black;
@@ -39,11 +39,36 @@
 #comments-header {
 	text-align: center;
 	font-size: 32px;
-	border-bottom: .025em solid blue;
-	background-color: red;
-	color: blue;
+	border-bottom: .025em solid whitesmoke;
+	background-color: darkslategray;
+	color: whitesmoke;
 	border-radius: 12px 12px 0px 0px;
 	margin-bottom: 0.75em;
+}
+
+#button-container {
+	display: flex;
+	justify-content: space-evenly;
+	color: black;
+	align-items: center;
+}
+
+#see-comments {
+
+}
+
+#add-no-comment {
+	color: black;
+}
+
+#add-comment {
+	color: black;
+}
+
+#blackbar {
+	width: 2px;
+	height: 20px;
+	background-color: black;
 }
 
 .comment-date {

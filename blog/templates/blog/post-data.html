@@ -17,9 +17,10 @@
 		</section>
 	{% endif %}
 	{% if comments %}
-		<div>
-			<button id="see-comments">See Comment</button>
-			<a href="/" id="add-see-comment">Add Comment</a>
+		<div id="button-container">
+			<button id="see-comments">See Comments</button>
+			<div id="blackbar"></div>
+			<a href="/" id="add-comment" class="comment-anchor">Add Comment</a>
 		</div>
 		<script type="text/javascript">
 			const commentBtn = document.querySelector('#see-comments')
@@ -30,8 +31,8 @@
 			})
 		</script>
 	{% else %}
-		<div>
-			<a href="/" id="add-no-see-comment">Add Comment</a>
+		<div id="button-container">
+			<a href="/" id="add-no-comment" class="comment-anchor">Add Comment</a>
 		</div>
 	{% endif %}
 </div>
@@ -45,6 +46,9 @@
 					<p class="comment-author"><strong>Written by: {{ comment.author.display_name }}</strong></p>
 					<p class="comment-content">{{ comment.content }}</p>
 					<p class="comment-date"><em>{{ comment.last_edited }}</em></p>
+				</section>
+				<section id="see-more-sec">
+					<button id="see-more-btn">See more</button>
 				</section>
 			{% endfor %}
 		</div>
