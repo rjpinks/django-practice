@@ -24,6 +24,40 @@ function createLoadComments() {
 			}
 			return response.json()
 		}).then(datas => {
+			function dateCleaner(date) {
+				let result = ''
+				const slicedDate = date.slice(0, 10)
+				const monthMap = new Map([
+					['01', 'January'],
+					['02', 'February'],
+					['03', 'March'],
+					['04', 'April'],
+					['05', 'May'],
+					['06', 'June'],
+					['07', 'July'],
+					['08', 'August'],
+					['09', 'September'],
+					['10', 'October'],
+					['11', 'November'],
+					['12', 'December']
+				])
+				result += monthMap.get(slicedDate.slice(5,7)) + ' ' + slicedDate.slice(8,10) + ', ' + slicedDate.slice(0,4) + ', '
+				const slicedTime = date.slice(11, 17).split(':')
+				let pm = false
+				let parsedTime = parseInt(slicedTime[0])
+				if (parsedTime > 12) {
+					pm = true
+					slicedTime[0] = parsedTime - 12
+				}
+				result += '' + slicedTime[0] + ':' + slicedTime[1]
+				if (!pm) {
+					result += ' a.m.'
+				} else {
+					result += ' p.m.'
+				}
+				return result
+			}
+
 			for (data of datas) {
 				// create elements
 				const publishedP = document.createElement('p')
@@ -33,7 +67,8 @@ function createLoadComments() {
 				// create text nodes
 				const strongText = document.createTextNode(data.author__display_name)
 				const contentText = document.createTextNode(data.content)
-				const publishedText = document.createTextNode(data.date_pub)
+				const cleanedDate = dateCleaner(data.date_pub)
+				const publishedText = document.createTextNode(cleanedDate)
 				// append nodes
 				authorP.appendChild(strongEl)
 				publishedP.appendChild(publishedText)
