@@ -22,14 +22,6 @@
 			<div id="blackbar"></div>
 			<a href="/" id="add-comment" class="comment-anchor">Add Comment</a>
 		</div>
-		<script type="text/javascript">
-			const commentBtn = document.querySelector('#see-comments')
-			commentBtn.addEventListener('click', (e) => {
-				console.log('clicked!')
-				const commentSection = document.querySelector('#comments-container')
-				commentSection.style.display = 'block'
-			})
-		</script>
 	{% else %}
 		<div id="button-container">
 			<a href="/" id="add-no-comment" class="comment-anchor">Add Comment</a>
@@ -40,19 +32,20 @@
 	<br>
 	<div id="comments-container">
 		<h2 id="comments-header">Comments</h2>
-		<div id="comment container">
+		<div id="comment-container">
 			{% for comment in comments %}
 				<section id="comment-{{ comment.id }}" class="comment-section">
 					<p class="comment-author"><strong>Written by: {{ comment.author.display_name }}</strong></p>
 					<p class="comment-content">{{ comment.content }}</p>
-					<p class="comment-date"><em>{{ comment.last_edited }}</em></p>
-				</section>
-				<section id="see-more-sec">
-					<button id="see-more-btn">See more</button>
+					<p class="comment-date"><em>{{ comment.date_pub }}</em></p>
 				</section>
 			{% endfor %}
+			<section id="see-more-sec">
+				<button id="see-more-btn">See more</button>
+			</section>
 		</div>
 	</div>
+	<script src="{% static 'blog/post-data.js' %}"></script>
 {% endif %}
 <br>
 {% endblock %}

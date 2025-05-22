@@ -27,7 +27,6 @@ class User(models.Model):
 class Comment(models.Model):
 	content = models.CharField()
 	date_pub = models.DateTimeField(auto_now_add=True)
-	last_edited = models.DateTimeField(auto_now=True)
 
 	author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
 	parent_post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')  # the related_name should allow reverse look-ups

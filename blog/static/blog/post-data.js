@@ -1,0 +1,68 @@
+// display comments
+const commentBtn = document.querySelector('#see-comments')
+	commentBtn.addEventListener('click', (e) => {
+	const commentSection = document.querySelector('#comments-container')
+	commentSection.style.display = 'block'
+})
+
+// load more comments
+function createLoadComments() {
+	let commentCount = 10
+	return function loadFn() {
+		console.log('clicked!')
+		const splitUrl = window.location.pathname.split('/')
+		const last = splitUrl.length - 1
+		const urlString = '/blog/api/comments/' + splitUrl[last] + '/' + commentCount
+		fetch(urlString, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+			}
+		}).then(response => {
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`)
+			}
+			return response.json()
+		}).then(datas => {
+			for (data of datas) {
+				// create elements
+				const publishedP = document.createElement('p')
+				const authorP = document.createElement('p')
+				const strongEl = document.createElement('strong')
+				const contentP = document.createElement('p')
+				// create text nodes
+				const strongText = document.createTextNode(data.author__display_name)
+				const contentText = document.createTextNode(data.content)
+				const publishedText = document.createTextNode(data.date_pub)
+				// append nodes
+				authorP.appendChild(strongEl)
+				publishedP.appendChild(publishedText)
+				contentP.appendChild(contentText)
+				strongEl.appendChild(strongText)
+				// give appropriate classes
+				publishedP.className = 'comment-date'
+				authorP.className = 'comment-author'
+				contentP.className = 'comment-content'
+				// create and append to a section
+				const newSection = document.createElement('section')
+				newSection.className = 'comment-section'
+				newSection.id = `comment-${data.id}`
+				newSection.appendChild(authorP)
+				newSection.appendChild(contentP)
+				newSection.appendChild(publishedP)
+				// append section to the comment container
+				const commentContainer = document.querySelector('#comment-container')
+				const seeMoreSec = document.querySelector('#see-more-sec')
+				commentContainer.insertBefore(newSection, seeMoreSec)
+			}
+		}).catch(error => {
+			const btn = document.querySelector('#see-more-btn')
+			btn.removeEventListener('click', loadFn)
+			btn.innerHTML = 'Out of Comments'
+		})
+		commentCount += 10
+	}
+}
+const seeMoreBtn = document.querySelector('#see-more-btn')
+const loadComments = createLoadComments()
+seeMoreBtn.addEventListener('click', loadComments)
