@@ -1,8 +1,22 @@
 // display comments
 const commentBtn = document.querySelector('#see-comments')
-	commentBtn.addEventListener('click', (e) => {
+commentBtn.addEventListener('click', (e) => {
 	const commentSection = document.querySelector('#comments-container')
 	commentSection.style.display = 'block'
+})
+
+// display Add Comment form
+const commentFormBtn = document.querySelector('#add-comment')
+commentFormBtn.addEventListener('click', (e) => {
+	const commentFormContainer = document.querySelector('#comment-form-container')
+	commentFormContainer.style.display = 'block'
+})
+
+// hide Add Comment form
+const cancelFormBtn = document.querySelector('#cancel-form-button')
+cancelFormBtn.addEventListener('click', (e) => {
+	const commentFormContainer = document.querySelector('#comment-form-container')
+	commentFormContainer.style.display = null
 })
 
 // load more comments

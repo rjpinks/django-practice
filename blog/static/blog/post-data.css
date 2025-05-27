@@ -85,3 +85,37 @@
 .comment-author {
 	margin-bottom: 0.75em;
 }
+
+/* form data */
+#comment-form-container {
+	display: none;
+	margin: auto;
+	max-width: 60%;
+	border: 4px solid darkgray;
+	border-radius: 12px;
+	padding: 4px;
+	background-color: #ffcc99;
+}
+
+#comment-form {
+	background-color: whitesmoke;
+	color: darkgray;
+	border-radius: 12px;
+	padding-right: 8px;
+	padding-bottom: 8px;
+}
+
+.comment-label {
+	color: black;
+	margin-left: 4px;
+}
+
+.comment-input {
+	margin-left: 4px;
+	background-color: #ffcc99;
+	color: whitesmoke;
+}
+
+.comment-input::placeholder {
+	color: whitesmoke;
+}

@@ -31,6 +31,12 @@ def posts_genre(request, genre):
 	
 
 def post_data(request, blog_id):
+	if request == 'POST':
+		comment = request.POST.get('comment')
+		# will need to add account information / autherization here
+		Comment.objects.create(comment=comment)
+		return redirect(request.path_info)
+
 	blog_post = get_object_or_404(Post, id=blog_id)
 	comments = Comment.objects.filter(parent_post=blog_post).order_by('date_pub')[:10]
 	return render(request, 'blog/post-data.html', {'post': blog_post, 'comments': comments})
@@ -48,3 +54,11 @@ def load_comments(request, blog_id, comment_count):
 		.values('id', 'content', 'date_pub', 'author__display_name')[comment_count:end_slice]
 	
 	return JsonResponse(list(comments), safe=False)
+
+
+def comment_form(request, blog_id):
+	return render(request, 'blog/comment-form.html')
+
+
+def register(request):
+	pass

@@ -20,14 +20,43 @@
 		<div id="button-container">
 			<button id="see-comments">See Comments</button>
 			<div id="blackbar"></div>
-			<a href="/" id="add-comment" class="comment-anchor">Add Comment</a>
+			<button id="add-comment">Add Comment</button>
 		</div>
 	{% else %}
 		<div id="button-container">
-			<a href="/" id="add-no-comment" class="comment-anchor">Add Comment</a>
+			<button id="add-comment">Add Comment</button>
 		</div>
 	{% endif %}
 </div>
+
+<br>
+
+<div id="comment-form-container">
+	<form id="comment-form" action="/blog/{{ post.id }}" method="post">
+		{% csrf_token %}
+		<div style="margin-top: 4px;" class="field">
+		  <label class="label comment-label">Message</label>
+		  <div class="control">
+		    <textarea name="comment" class="textarea comment-input" placeholder="Place a message here!"></textarea>
+		  </div>
+		</div>
+
+		<div class="field is-grouped">
+		  <div class="control">
+		    <input style="margin-left: 4px; background-color: #ffff99;" class="button" type="submit" value="Submit">
+		  </div>
+		  <div class="control">
+		    <button
+		    	id="cancel-form-button"
+		    	class="button"
+		    	style="background-color: #ff9999;"
+		    >Cancel</button>
+		  </div>
+		</div>
+
+	</form>
+</div>
+
 {% if comments %}
 	<br>
 	<div id="comments-container">
