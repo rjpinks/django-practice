@@ -2,9 +2,47 @@
 
 {% block style %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'blog/registry-form.css' %}">
+<link rel="stylesheet" href="{% static 'blog/registery-form.css' %}">
 {% endblock %}
 
 {% block content %}
-<h1>hello world</h1>
+<div id="registery-form-container">
+	<form id="registery-form" action="/blog/{{ post.id }}" method="post">
+		{% csrf_token %}
+		<div class="field">
+		  <label class="label">Email</label>
+		  <div class="control">
+		    <input name="location" class="input registery-input" type="text" placeholder="email@email.com">
+		  </div>
+		</div>
+
+		<div class="field">
+		  <label class="label">Display Name</label>
+		  <div class="control">
+		    <input name="location" class="input registery-input" type="text" placeholder="John Doe">
+		  </div>
+		</div>
+
+		<div class="field">
+		  <label class="label">Password</label>
+		  <div class="control">
+		    <input name="location" class="input registery-input" type="text" placeholder="************">
+		  </div>
+		</div>
+
+		<div class="field is-grouped">
+		  <div class="control">
+		    <input style="margin-left: 4px; background-color: #ffff99;" class="button" type="submit" value="Submit">
+		  </div>
+		  <div class="control">
+		    <button
+		    	id="cancel-form-button"
+		    	class="button"
+		    	style="background-color: #ff9999;"
+		    >Cancel</button>
+		  </div>
+		</div>
+
+	</form>
+</div>
 {% endblock %}
