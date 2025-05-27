@@ -61,4 +61,4 @@ def comment_form(request, blog_id):
 
 
 def register(request):
-	pass
+	return render(request, 'blog/registery-form.html')
