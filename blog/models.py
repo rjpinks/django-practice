@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
@@ -13,21 +14,20 @@ class Post(models.Model):
 		return self.title
 
 
-class User(models.Model):
-	email = models.EmailField(unique=True)
-	display_name = models.CharField(max_length=100)
-	blog_pass = models.CharField(max_length=255)
-	date_joined = models.DateTimeField(auto_now_add=True)
+class CustomUser(AbstractUser):
+    bio = models.TextField(blank=True)
+    date_of_birth = models.DateField(null=True, blank=True)
+    display_name = models.CharField(max_length=100)
 
-	def __str__(self):
-		return self.email
+    def __str__(self):
+    	return self.email
 
 
 class Comment(models.Model):
 	content = models.CharField()
 	date_pub = models.DateTimeField(auto_now_add=True)
 
-	author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+	author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='comments')
 	parent_post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')  # the related_name should allow reverse look-ups
 
 	def __str__(self):
