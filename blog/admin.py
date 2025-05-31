@@ -5,7 +5,7 @@ from .models import Post, CustomUser
 
 
 class BlogPostAdmin(admin.ModelAdmin):
-	fields = ['title', 'genre', 'content', 'image_address']
+    fields = ['title', 'genre', 'content', 'image_address']
     list_display = ['title', 'genre']
     search_fields = ['title', 'genre']
 

@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404, HttpResponse, JsonResponse
 from django.core.paginator import Paginator
 
-from .models import Post, Comment
+from .models import Post, Comment, CustomUser
 
 
 def index(request):
@@ -31,10 +31,11 @@ def posts_genre(request, genre):
 	
 
 def post_data(request, blog_id):
-	if request == 'POST':
+	if request.method == 'POST':
 		comment = request.POST.get('comment')
 		# will need to add account information / autherization here
-		Comment.objects.create(comment=comment)
+		new_com = Comment.objects.create(comment=comment)
+		new_com.save()
 		return redirect(request.path_info)
 
 	blog_post = get_object_or_404(Post, id=blog_id)
@@ -61,4 +62,18 @@ def comment_form(request, blog_id):
 
 
 def register(request):
-	return render(request, 'blog/registery-form.html')
+	if request.method == 'GET':
+		return render(request, 'blog/registery-form.html')
+	elif request.method == 'POST':
+		user = CustomUser.objects.create(
+			email=request.POST.get('email'),
+			username=request.POST.get('display-name'),
+			first_name=request.POST.get('first-name'),
+			last_name=request.POST.get('last-name'),
+			password=request.POST.get('password'),
+			# bio='',
+			date_of_birth=request.POST.get('dob'),
+			avatar_address='',	
+		)
+		user.save()
+		return redirect('/blog/')

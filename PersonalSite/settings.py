@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Used Model for Authorization (Custom)
-AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = 'blog.CustomUser'
 
 
 # Internationalization
