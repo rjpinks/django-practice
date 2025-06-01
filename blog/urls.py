@@ -5,7 +5,7 @@ from . import views
 
 urlpatterns = [
 	# ex: /blog/
-	path('', views.index, name='index'),
+	path('', views.index, name='blog/index'),
 	# ex: /blog/posts/art
 	path('posts/<str:genre>', views.posts_genre, name='posts_genre'),
 	# ex: /blog/4
@@ -15,5 +15,7 @@ urlpatterns = [
 	# ex: /blog/register
 	path('register', views.register, name='register'),
 	# ex: /blog/login
-	path('login', views.login, name='login')
+	path('login', views.Login.as_view(), name='login'),
+	# ex: /blog/logout
+	path('logout', views.Logout.as_view(), name='logout'),
 ]

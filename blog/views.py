@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404, HttpResponse, JsonResponse
 from django.core.paginator import Paginator
+from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import reverse_lazy
 
 from .models import Post, Comment, CustomUser
 
@@ -77,7 +79,13 @@ def register(request):
 		return redirect('/blog/')  # change this to their homepage in the future
 
 
-def login(request):
-	if request.method == 'GET':
-		return render(request, 'blog/login.html')
-		
+class Login(LoginView):
+	template_name = 'blog/login.html'
+	redirect_authenticated_user = True
+	
+	def get_success_url(self):
+		return reverse_lazy('blog/index')  # this will be their homepage later
+
+
+class Logout(LogoutView):
+	next_page = reverse_lazy('blog/index')
