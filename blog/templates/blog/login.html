@@ -7,12 +7,12 @@
 
 {% block content %}
 <div id="registery-form-container">
-	<form id="registery-form" action="/blog/register" method="post">
+	<form id="registery-form" action="{% url 'login' %}" method="post">
 		{% csrf_token %}
 		<div class="field">
-		  <label class="label">Email</label>
+		  <label class="label">Username</label>
 		  <div class="control">
-		    <input name="email" class="input registery-input" type="email" placeholder="email@email.com">
+		    <input name="username" class="input registery-input" type="text" placeholder="name mcnameface">
 		  </div>
 		</div>
 
@@ -32,9 +32,13 @@
 		    	id="cancel-form-button"
 		    	class="button"
 		    	style="background-color: #ff9999;"
+		    	onclick="history.back()"
 		    >Cancel</button>
 		  </div>
 		</div>
 	</form>
+	{% if form.errors %}
+		<p style="color:red">{{ form.errors }}</p>
+	{% endif %}
 </div>
 {% endblock %}

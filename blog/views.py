@@ -76,16 +76,17 @@ def register(request):
 		)
 		user.set_password(request.POST.get('password'))
 		user.save()
-		return redirect('/blog/')  # change this to their homepage in the future
+		return redirect('login')
 
 
 class Login(LoginView):
 	template_name = 'blog/login.html'
 	redirect_authenticated_user = True
-	
-	def get_success_url(self):
-		return reverse_lazy('blog/index')  # this will be their homepage later
+	success_url = reverse_lazy('blog')
+
+	def get_success_url(self):  # incase success_url does not work properly
+		return self.success_url
 
 
 class Logout(LogoutView):
-	next_page = reverse_lazy('blog/index')
+	next_page = reverse_lazy('blog')
