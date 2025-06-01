@@ -35,7 +35,6 @@ def post_data(request, blog_id):
 		comment = request.POST.get('comment')
 		# will need to add account information / autherization here
 		new_com = Comment.objects.create(comment=comment)
-		new_com.save()
 		return redirect(request.path_info)
 
 	blog_post = get_object_or_404(Post, id=blog_id)
@@ -70,10 +69,15 @@ def register(request):
 			username=request.POST.get('display-name'),
 			first_name=request.POST.get('first-name'),
 			last_name=request.POST.get('last-name'),
-			password=request.POST.get('password'),
-			# bio='',
 			date_of_birth=request.POST.get('dob'),
 			avatar_address='',	
 		)
+		user.set_password(request.POST.get('password'))
 		user.save()
-		return redirect('/blog/')
+		return redirect('/blog/')  # change this to their homepage in the future
+
+
+def login(request):
+	if request.method == 'GET':
+		return render(request, 'blog/login.html')
+		
