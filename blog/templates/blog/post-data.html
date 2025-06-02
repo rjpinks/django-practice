@@ -117,7 +117,7 @@
 		<div id="comment-container">
 			{% for comment in comments %}
 				<section id="comment-{{ comment.id }}" class="comment-section">
-					<p class="comment-author"><strong>Written by: {{ comment.author.display_name }}</strong></p>
+					<p class="comment-author"><strong>Written by: {{ comment.author.username }}</strong></p>
 					<p class="comment-content">{{ comment.content }}</p>
 					<p class="comment-date"><em>{{ comment.date_pub }}</em></p>
 				</section>
