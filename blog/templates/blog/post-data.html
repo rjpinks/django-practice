@@ -32,16 +32,8 @@
 			// display Add Comment form
 			const commentFormBtn = document.querySelector('#add-comment-btn')
 			commentFormBtn.addEventListener('click', (e) => {
-				const commentFormContainer = document.querySelector(
-					'#comment-form-container')
-				commentFormContainer.style.display = 'block'
-			})
-
-			// hide Add Comment form
-			const cancelFormBtn = document.querySelector('#cancel-form-button')
-			cancelFormBtn.addEventListener('click', (e) => {
 				const commentFormContainer = document.querySelector('#comment-form-container')
-				commentFormContainer.style.display = null
+				commentFormContainer.style.display = 'block'
 			})
 		</script>
 	{% elif comments and not user.is_authenticated %}
@@ -67,13 +59,6 @@
 				commentFormBtn.addEventListener('click', (e) => {
 					const commentFormContainer = document.querySelector('#comment-form-container')
 					commentFormContainer.style.display = 'block'
-				})
-
-				// hide Add Comment form
-				const cancelFormBtn = document.querySelector('#cancel-form-button')
-				cancelFormBtn.addEventListener('click', (e) => {
-					const commentFormContainer = document.querySelector('#comment-form-container')
-					commentFormContainer.style.display = null
 				})
 			</script>
 		</div>
@@ -108,11 +93,19 @@
 		    <button
 		    	id="cancel-form-button"
 		    	class="button"
+		    	type="button"
 		    	style="background-color: #ff9999;"
 		    >Cancel</button>
+		    <script>
+		    	const cancelFormBtn = document.querySelector('#cancel-form-button')
+		    	cancelFormBtn.addEventListener('click', e => {
+		    		e.preventDefault()
+		    		const commentFormContainer = document.querySelector('#comment-form-container')
+		    		commentFormContainer.style.display = 'none'
+		    	})
+		    </script>
 		  </div>
 		</div>
-
 	</form>
 </div>
 {% endif %}

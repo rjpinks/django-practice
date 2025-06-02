@@ -100,6 +100,6 @@ def comment_form(request):
 			author=request.user,
 			parent_post=post
 		)
-		return HttpResponseRedirect(f'/blog/post/{post.pk}/')
+		return HttpResponseRedirect(f'/blog/{post.pk}')
 	elif request.method == 'POST':
 		return redirect('login')
