@@ -18,4 +18,6 @@ urlpatterns = [
 	path('login', views.Login.as_view(), name='login'),
 	# ex: /blog/logout
 	path('logout', views.Logout.as_view(), name='logout'),
+	# ex: /blog/api/comment-form
+	path('api/comment-form', views.comment_form, name='comment_form'),
 ]

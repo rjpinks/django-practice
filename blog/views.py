@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import Http404, HttpResponse, JsonResponse
+from django.http import Http404, HttpResponse, JsonResponse, HttpResponseRedirect
 from django.core.paginator import Paginator
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
@@ -90,3 +90,16 @@ class Login(LoginView):
 
 class Logout(LogoutView):
 	next_page = reverse_lazy('blog')
+
+
+def comment_form(request):
+	if request.method == 'POST' and request.user.is_authenticated:
+		post = get_object_or_404(Post, pk=int(request.POST.get('parent-post')))
+		Comment.objects.create(
+			content=request.POST.get('comment'),
+			author=request.user,
+			parent_post=post
+		)
+		return HttpResponseRedirect(f'/blog/post/{post.pk}/')
+	elif request.method == 'POST':
+		return redirect('login')

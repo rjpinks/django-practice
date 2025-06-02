@@ -16,24 +16,83 @@
 			<p id="post-content">{{ post.content }}</p>
 		</section>
 	{% endif %}
-	{% if comments %}
+	{% if comments and user.is_authenticated %}
 		<div id="button-container">
 			<button id="see-comments">See Comments</button>
 			<div id="blackbar"></div>
-			<button id="add-comment">Add Comment</button>
+			<button id="add-comment-btn">Add Comment</button>
+		</div>
+		<script>
+			// display comments
+			const commentBtn = document.querySelector('#see-comments')
+			commentBtn.addEventListener('click', (e) => {
+				const commentSection = document.querySelector('#comments-container')
+				commentSection.style.display = 'block'
+			})
+			// display Add Comment form
+			const commentFormBtn = document.querySelector('#add-comment-btn')
+			commentFormBtn.addEventListener('click', (e) => {
+				const commentFormContainer = document.querySelector(
+					'#comment-form-container')
+				commentFormContainer.style.display = 'block'
+			})
+
+			// hide Add Comment form
+			const cancelFormBtn = document.querySelector('#cancel-form-button')
+			cancelFormBtn.addEventListener('click', (e) => {
+				const commentFormContainer = document.querySelector('#comment-form-container')
+				commentFormContainer.style.display = null
+			})
+		</script>
+	{% elif comments and not user.is_authenticated %}
+		<div id="button-container">
+			<button id="see-comments">See Comments</button>
+			<div id="blackbar"></div>
+			<a id="add-comment" href="{% url 'login' %}">Add Comment</a>
+		</div>
+		<script>
+			// display comments
+			const commentBtn = document.querySelector('#see-comments')
+			commentBtn.addEventListener('click', (e) => {
+				const commentSection = document.querySelector('#comments-container')
+				commentSection.style.display = 'block'
+			})
+		</script>
+	{% elif not comments and user.is_authenticated %}
+		<div id="button-container">
+			<button id="add-comment-btn">Add Comment</button>
+			<script>
+				// display Add Comment form
+				const commentFormBtn = document.querySelector('#add-comment-btn')
+				commentFormBtn.addEventListener('click', (e) => {
+					const commentFormContainer = document.querySelector('#comment-form-container')
+					commentFormContainer.style.display = 'block'
+				})
+
+				// hide Add Comment form
+				const cancelFormBtn = document.querySelector('#cancel-form-button')
+				cancelFormBtn.addEventListener('click', (e) => {
+					const commentFormContainer = document.querySelector('#comment-form-container')
+					commentFormContainer.style.display = null
+				})
+			</script>
 		</div>
 	{% else %}
 		<div id="button-container">
-			<button id="add-comment">Add Comment</button>
+			<a id="add-comment" href="{% url 'login' %}">Add Comment</a>
 		</div>
 	{% endif %}
 </div>
 
 <br>
 
+{% if user.is_authenticated %}
 <div id="comment-form-container">
-	<form id="comment-form" action="/blog/{{ post.id }}" method="post">
+	<form id="comment-form" action="{% url 'comment_form' %}" method="POST">
 		{% csrf_token %}
+		<input type="hidden" name="parent-post" value="{{ post.id }}">
+		<input type="hidden" name="author-id" value="{{ user.id }}">
+
 		<div style="margin-top: 4px;" class="field">
 		  <label class="label comment-label">Message</label>
 		  <div class="control">
@@ -56,6 +115,7 @@
 
 	</form>
 </div>
+{% endif %}
 
 {% if comments %}
 	<br>
@@ -74,7 +134,7 @@
 			</section>
 		</div>
 	</div>
-	<script src="{% static 'blog/post-data.js' %}"></script>
+	<script src="{% static 'blog/loadComments.js' %}"></script>
 {% endif %}
 <br>
 {% endblock %}
