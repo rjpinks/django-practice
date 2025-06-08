@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+
+{% block style %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'blog/user-account.css' %}">
+{% endblock %}
+
+{% block content %}
+<div>
+	<div>
+		<h1>{{ user.username }}</h1>
+		<div>
+			<h2>Comments</h2>
+			<div>
+				<!-- we will use dynamic pagination like with other comments. -->
+				{% for comment in comments %}
+					<section>
+						<p>{{ comment.content }}</p>
+						<p>{{ comment.date_pub }}</p>
+						{% if user.id == user_id %}
+							<button>Update</button>
+							<button>Delete</button>
+							<form>
+								{% csrf_token %}
+								<textarea></textarea>
+								<button type="submit">Submit</button>
+							</form>
+						{% endif %}
+					</section>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

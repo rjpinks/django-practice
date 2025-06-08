@@ -103,3 +103,16 @@ def comment_form(request):
 		return HttpResponseRedirect(f'/blog/{post.pk}')
 	elif request.method == 'POST':
 		return redirect('login')
+
+
+def user_account(request, user_id):
+	if request.method == 'GET':
+		comment_user = get_object_or_404(CustomUser, pk=user_id)
+		comments = Comment.objects.filter(author=comment_user)
+		return render(request, 'blog/user-account.html', {'comments': comments, 'user_id': user_id})
+	elif request.method == 'DELETE':
+		pass
+	elif request.method == 'PUT':
+		pass
+	
+	raise Http404('wrong page sonny...')

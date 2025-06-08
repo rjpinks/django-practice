@@ -20,4 +20,6 @@ urlpatterns = [
 	path('logout', views.Logout.as_view(), name='logout'),
 	# ex: /blog/api/comment-form
 	path('api/comment-form', views.comment_form, name='comment_form'),
+	# ex: blog/420XxUserAccountxX6969
+	path('user/<int:user_id>', views.user_account, name='user_account'),
 ]

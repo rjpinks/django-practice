@@ -5,3 +5,8 @@
 
 	- See comments in blog/base.html regarding burger dropdown for tablet and blow's view
 	
+
+## Tech Being Used
+	- Django
+	- Postgres
+	- python-dotenv
