@@ -109,7 +109,7 @@ def user_account(request, user_id):
 	if request.method == 'GET':
 		comment_user = get_object_or_404(CustomUser, pk=user_id)
 		comments = Comment.objects.filter(author=comment_user)
-		return render(request, 'blog/user-account.html', {'comments': comments, 'user_id': user_id})
+		return render(request, 'blog/user-account.html', {'comments': comments, 'page_author': comment_user})
 	elif request.method == 'DELETE':
 		pass
 	elif request.method == 'PUT':

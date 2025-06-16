@@ -6,30 +6,47 @@
 {% endblock %}
 
 {% block content %}
-<div>
-	<div>
-		<h1>{{ user.username }}</h1>
-		<div>
-			<h2>Comments</h2>
-			<div>
-				<!-- we will use dynamic pagination like with other comments. -->
-				{% for comment in comments %}
-					<section>
+<div id="master-container">
+	<section id="user-section">
+		<h1 id="user-header">{{ page_author.username }}</h1>
+		{% if page_author.image_address %}
+			<img src="{{ page_author.image_address }}" alt="user chosen avatar">
+		{% endif %}
+		{% if page_author.bio %}
+			<p id="bio">{{ page_author.bio }}</p>
+		{% endif %}
+	</section>
+	<br>
+	<section id="comment-section">
+		<h2 id="container-header">Comments</h2>
+		<div id="comment-master">
+			<!-- we will use dynamic pagination like with other comments. -->
+			{% for comment in comments %}
+				<div class="comment-container">
+					<section id="main-content">
 						<p>{{ comment.content }}</p>
-						<p>{{ comment.date_pub }}</p>
-						{% if user.id == user_id %}
+						<p class="pub-date">{{ comment.date_pub }}</p>
+					</section>
+					{% if user.id == page_author.id %}
+						<section id="alterations-section">
 							<button>Update</button>
 							<button>Delete</button>
-							<form>
+							<form id="update-form" action="PUT">
 								{% csrf_token %}
 								<textarea></textarea>
 								<button type="submit">Submit</button>
 							</form>
-						{% endif %}
-					</section>
-				{% endfor %}
-			</div>
+							<form id="delete-form" action="DELETE">
+								{% csrf_token %}
+								<button>Confirm</button>
+								<button type="submit">Cancel</button>
+							</form>
+						</section>
+						<br>
+					{% endif %}
+				</div>
+			{% endfor %}
 		</div>
-	</div>
+	</section>
 </div>
 {% endblock %}

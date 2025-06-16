@@ -1,0 +1,55 @@
+#master-container {
+	margin: auto;
+	max-width: 60%;
+	background-color: gray;
+}
+
+#container-header {
+	background-color: lightgreen;
+	border-bottom: 0.4em solid black;
+	font-size: 22px;
+	color: black;
+}
+
+#user-section {
+
+}
+
+#comment-section {
+
+}
+
+#comment-master {
+
+}
+
+#user-header {
+	background-color: darkgreen;
+	border-bottom: 0.3em solid black;
+	font-size: 28px;
+	color: black;
+}
+
+#main-content {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#alterations-section {
+	border-top: 1px solid darkslategray;
+}
+
+.comment-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.pub-date {
+	padding-left: 0.5em;
+	border-left: 2px solid darkslategray;
+}
+
+form {
+	display: none;
+}
